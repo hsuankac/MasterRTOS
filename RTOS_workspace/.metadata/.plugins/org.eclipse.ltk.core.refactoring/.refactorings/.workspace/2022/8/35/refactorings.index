@@ -1,0 +1,4 @@
+1661212282436	Delete resource '002LED_Task/common/ThirdParty/FreeRTOS/FreeRTOSConfig.h'
+1661296828492	Delete resource '007Task_Priority/006LED_Btn_ISR Debug.launch'
+1661366144530	Delete resource '008Queues_n_timer/007Task_Priority.launch'
+1661367131151	Delete resource '008Queues_n_timer/Core/task_handler.c'

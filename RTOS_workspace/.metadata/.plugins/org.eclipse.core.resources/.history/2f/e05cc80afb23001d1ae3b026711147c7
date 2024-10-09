@@ -1,0 +1,48 @@
+/*
+ * task_handler.c
+ *
+ *  Created on: Aug 24, 2022
+ *      Author: hsuankai.chang
+ */
+
+#include "main.h"
+
+void menu_task(void* parameters)
+{
+	while(1)
+	{
+
+	}
+}
+
+void cmd_handler_task(void* parameters)
+{
+	while(1)
+	{
+		xTaskNotifyWait(0, 0, NULL, portMAX_DELAY);
+	}
+}
+
+void print_task(void* parameters)
+{
+	while(1)
+	{
+
+	}
+}
+
+void led_task(void* parameters)
+{
+	while(1)
+	{
+
+	}
+}
+
+void rtc_task(void* parameters)
+{
+	while(1)
+	{
+
+	}
+}

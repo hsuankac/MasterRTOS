@@ -1,0 +1,8 @@
+/*
+ * rtc.c
+ *
+ *  Created on: Aug 24, 2022
+ *      Author: hsuankai.chang
+ */
+
+#include "main.h"
