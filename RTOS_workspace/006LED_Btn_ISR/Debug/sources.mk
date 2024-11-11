@@ -1,6 +1,6 @@
 ################################################################################
 # Automatically-generated file. Do not edit!
-# Toolchain: GNU Tools for STM32 (10.3-2021.10)
+# Toolchain: GNU Tools for STM32 (12.3.rel1)
 ################################################################################
 
 ELF_SRCS := 
@@ -9,6 +9,7 @@ S_SRCS :=
 C_SRCS := 
 S_UPPER_SRCS := 
 O_SRCS := 
+CYCLO_FILES := 
 SIZE_OUTPUT := 
 OBJDUMP_LIST := 
 SU_FILES := 
@@ -21,15 +22,15 @@ C_DEPS :=
 
 # Every subdirectory with source files must be described here
 SUBDIRS := \
+Common/ThirdParty/FreeRTOS \
+Common/ThirdParty/FreeRTOS/portable/GCC/ARM_CM4F \
+Common/ThirdParty/FreeRTOS/portable/MemMang \
+Common/ThirdParty/SEGGER/Config \
+Common/ThirdParty/SEGGER/OS \
+Common/ThirdParty/SEGGER/Rec \
+Common/ThirdParty/SEGGER/SEGGER \
+Common/ThirdParty/SEGGER/SEGGER/Syscalls \
 Core/Src \
 Core/Startup \
 Drivers/STM32F4xx_HAL_Driver/Src \
-common/ThirdParty/FreeRTOS \
-common/ThirdParty/FreeRTOS/portable/GCC/ARM_CM4F \
-common/ThirdParty/FreeRTOS/portable/MemMang \
-common/ThirdParty/SEGGER/Config \
-common/ThirdParty/SEGGER/OS \
-common/ThirdParty/SEGGER/Rec \
-common/ThirdParty/SEGGER/SEGGER \
-common/ThirdParty/SEGGER/SEGGER/Syscalls \
 

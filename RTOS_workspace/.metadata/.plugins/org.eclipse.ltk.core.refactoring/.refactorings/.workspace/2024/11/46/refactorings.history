@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">&#x0A;<refactoring comment="Rename resource &apos;009_Cnt_Sema_Tasks&apos; to &apos;010Cnt_Sema_Tasks&apos;" description="Rename resource &apos;009_Cnt_Sema_Tasks&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="/009_Cnt_Sema_Tasks" name="010Cnt_Sema_Tasks" stamp="1731351177417" updateReferences="true"/>&#x0A;<refactoring comment="Rename resource &apos;011Mutex_Using_Bib_Sema&apos; to &apos;011Mutex_Using_Bin_Sema&apos;" description="Rename resource &apos;011Mutex_Using_Bib_Sema&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="/011Mutex_Using_Bib_Sema" name="011Mutex_Using_Bin_Sema" stamp="1731354258964" updateReferences="true"/>
+</session>

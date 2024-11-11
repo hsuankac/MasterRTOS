@@ -1,6 +1,6 @@
 ################################################################################
 # Automatically-generated file. Do not edit!
-# Toolchain: GNU Tools for STM32 (10.3-2021.10)
+# Toolchain: GNU Tools for STM32 (12.3.rel1)
 ################################################################################
 
 -include ../makefile.init
@@ -9,17 +9,16 @@ RM := rm -rf
 
 # All of the sources participating in the build are defined here
 -include sources.mk
--include common/ThirdParty/SEGGER/SEGGER/Syscalls/subdir.mk
--include common/ThirdParty/SEGGER/SEGGER/subdir.mk
--include common/ThirdParty/SEGGER/Rec/subdir.mk
--include common/ThirdParty/SEGGER/OS/subdir.mk
--include common/ThirdParty/SEGGER/Config/subdir.mk
--include common/ThirdParty/FreeRTOS/portable/MemMang/subdir.mk
--include common/ThirdParty/FreeRTOS/portable/GCC/ARM_CM4F/subdir.mk
--include common/ThirdParty/FreeRTOS/subdir.mk
+-include USB_HOST/Target/subdir.mk
+-include USB_HOST/App/subdir.mk
+-include Middlewares/ST/STM32_USB_Host_Library/Core/Src/subdir.mk
+-include Middlewares/ST/STM32_USB_Host_Library/Class/CDC/Src/subdir.mk
 -include Drivers/STM32F4xx_HAL_Driver/Src/subdir.mk
 -include Core/Startup/subdir.mk
 -include Core/Src/subdir.mk
+-include Common/ThirdParty/FreeRTOS/portable/MemMang/subdir.mk
+-include Common/ThirdParty/FreeRTOS/portable/GCC/ARM_CM4F/subdir.mk
+-include Common/ThirdParty/FreeRTOS/subdir.mk
 -include objects.mk
 
 ifneq ($(MAKECMDGOALS),clean)

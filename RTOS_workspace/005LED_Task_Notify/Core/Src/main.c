@@ -6,13 +6,12 @@
   ******************************************************************************
   * @attention
   *
-  * <h2><center>&copy; Copyright (c) 2021 STMicroelectronics.
-  * All rights reserved.</center></h2>
+  * Copyright (c) 2024 STMicroelectronics.
+  * All rights reserved.
   *
-  * This software component is licensed by ST under BSD 3-Clause license,
-  * the "License"; You may not use this file except in compliance with the
-  * License. You may obtain a copy of the License at:
-  *                        opensource.org/licenses/BSD-3-Clause
+  * This software is licensed under terms that can be found in the LICENSE file
+  * in the root directory of this software component.
+  * If no LICENSE file comes with this software, it is provided AS-IS.
   *
   ******************************************************************************
   */
@@ -25,7 +24,6 @@
 #include <stdio.h>
 #include "FreeRTOS.h"
 #include "task.h"
-
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -35,6 +33,7 @@
 
 /* Private define ------------------------------------------------------------*/
 /* USER CODE BEGIN PD */
+
 /* USER CODE END PD */
 
 /* Private macro -------------------------------------------------------------*/
@@ -45,16 +44,13 @@
 /* Private variables ---------------------------------------------------------*/
 
 /* USER CODE BEGIN PV */
-
-#define DWT_CTRL    (*(volatile uint32_t*)0xE0001000)
-
+#define DWT_CTRL		(*(volatile uint32_t*)(0xE0001000))
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
 void SystemClock_Config(void);
 static void MX_GPIO_Init(void);
 /* USER CODE BEGIN PFP */
-
 static void led_green_handler(void* parameters);
 static void led_red_handler(void* parameters);
 static void led_orange_handler(void* parameters);
@@ -74,7 +70,6 @@ TaskHandle_t volatile next_task_handle = NULL;
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
 
-
 /* USER CODE END 0 */
 
 /**
@@ -83,10 +78,9 @@ TaskHandle_t volatile next_task_handle = NULL;
   */
 int main(void)
 {
+
   /* USER CODE BEGIN 1 */
-
-	BaseType_t status;
-
+  BaseType_t  status;
   /* USER CODE END 1 */
 
   /* MCU Configuration--------------------------------------------------------*/
@@ -109,40 +103,30 @@ int main(void)
   MX_GPIO_Init();
   /* USER CODE BEGIN 2 */
 
-  //Enable the CYCCNT counter.
-  DWT_CTRL |= ( 1 << 0);
+  // Enable the CYCCNT counter
+  DWT_CTRL |= (1 << 0);
 
-  SEGGER_UART_init(250000);
+  SEGGER_UART_init(500000);
 
   SEGGER_SYSVIEW_Conf();
 
- // SEGGER_SYSVIEW_Start();
+  //SEGGER_SYSVIEW_Start();
 
   status = xTaskCreate(led_green_handler, "LED_green_task", 200, NULL, 3, &ledg_task_handle);
-
   configASSERT(status == pdPASS);
 
   next_task_handle = ledg_task_handle;
 
-  status = xTaskCreate(led_red_handler, "LED_red_task", 200, NULL, 2, &ledr_task_handle);
-
+  status = xTaskCreate(led_red_handler, "LED_red_task", 200, NULL, 1, &ledr_task_handle);
   configASSERT(status == pdPASS);
 
-  status = xTaskCreate(led_orange_handler, "LED_orange_task", 200, NULL, 1, &ledo_task_handle);
-
+  status = xTaskCreate(led_orange_handler, "LED_orange_task", 200, NULL, 2, &ledo_task_handle);
   configASSERT(status == pdPASS);
 
   status = xTaskCreate(button_handler, "Button task", 200, NULL, 4, &btn_task_handle);
-
   configASSERT(status == pdPASS);
 
-  //start the freeRTOS scheduler
   vTaskStartScheduler();
-
-  //if the control comes here, then the launch of the scheduler has failed due to
-  //insufficient memory in heap
-
-
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -179,8 +163,8 @@ void SystemClock_Config(void)
   RCC_OscInitStruct.PLL.PLLState = RCC_PLL_ON;
   RCC_OscInitStruct.PLL.PLLSource = RCC_PLLSOURCE_HSI;
   RCC_OscInitStruct.PLL.PLLM = 8;
-  RCC_OscInitStruct.PLL.PLLN = 168;
-  RCC_OscInitStruct.PLL.PLLP = RCC_PLLP_DIV2;
+  RCC_OscInitStruct.PLL.PLLN = 50;
+  RCC_OscInitStruct.PLL.PLLP = RCC_PLLP_DIV4;
   RCC_OscInitStruct.PLL.PLLQ = 7;
   if (HAL_RCC_OscConfig(&RCC_OscInitStruct) != HAL_OK)
   {
@@ -196,7 +180,7 @@ void SystemClock_Config(void)
   RCC_ClkInitStruct.APB1CLKDivider = RCC_HCLK_DIV4;
   RCC_ClkInitStruct.APB2CLKDivider = RCC_HCLK_DIV2;
 
-  if (HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_5) != HAL_OK)
+  if (HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_0) != HAL_OK)
   {
     Error_Handler();
   }
@@ -210,6 +194,8 @@ void SystemClock_Config(void)
 static void MX_GPIO_Init(void)
 {
   GPIO_InitTypeDef GPIO_InitStruct = {0};
+/* USER CODE BEGIN MX_GPIO_Init_1 */
+/* USER CODE END MX_GPIO_Init_1 */
 
   /* GPIO Ports Clock Enable */
   __HAL_RCC_GPIOE_CLK_ENABLE();
@@ -338,49 +324,26 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   HAL_GPIO_Init(MEMS_INT2_GPIO_Port, &GPIO_InitStruct);
 
+/* USER CODE BEGIN MX_GPIO_Init_2 */
+/* USER CODE END MX_GPIO_Init_2 */
 }
 
 /* USER CODE BEGIN 4 */
-
 static void led_green_handler(void* parameters)
 {
 	BaseType_t status;
 	while(1)
 	{
-		SEGGER_SYSVIEW_PrintfTarget("Toggling green LED!!");
+		SEGGER_SYSVIEW_PrintfTarget("Toggling green LED");
 		HAL_GPIO_TogglePin(GPIOD, LED_GREEN_PIN);
-		status = xTaskNotifyWait(0,0,NULL, pdMS_TO_TICKS(1000));
-		if (status == pdTRUE)
-		{
+		status = xTaskNotifyWait(0, 0, NULL, pdMS_TO_TICKS(1000));
+		if(status == pdTRUE){
 			vTaskSuspendAll();
 			next_task_handle = ledo_task_handle;
 			xTaskResumeAll();
 			HAL_GPIO_WritePin(GPIOD, LED_GREEN_PIN, GPIO_PIN_SET);
-			SEGGER_SYSVIEW_PrintfTarget("Delete green task!!");
-			vTaskResume(ledo_task_handle);
-			vTaskSuspend(NULL);
-		}
-	}
-
-}
-
-static void led_orange_handler(void* parameters)
-{
-	BaseType_t status;
-	while(1)
-	{
-		SEGGER_SYSVIEW_PrintfTarget("Toggling ORANGE LED!!");
-		HAL_GPIO_TogglePin(GPIOD, LED_ORANGE_PIN);
-		status = xTaskNotifyWait(0,0,NULL, pdMS_TO_TICKS(800));
-		if (status == pdTRUE)
-		{
-			vTaskSuspendAll();
-			next_task_handle = ledr_task_handle;
-			xTaskResumeAll();
-			HAL_GPIO_WritePin(GPIOD, LED_ORANGE_PIN, GPIO_PIN_SET);
-			SEGGER_SYSVIEW_PrintfTarget("Delete orange task!!");
-			vTaskResume(ledr_task_handle);
-			vTaskSuspend(NULL);
+			SEGGER_SYSVIEW_PrintfTarget("Delete green task");
+			vTaskDelete(NULL);
 		}
 	}
 }
@@ -390,17 +353,36 @@ static void led_red_handler(void* parameters)
 	BaseType_t status;
 	while(1)
 	{
-		SEGGER_SYSVIEW_PrintfTarget("Toggling RED LED!!");
+		SEGGER_SYSVIEW_PrintfTarget("Toggling red LED");
 		HAL_GPIO_TogglePin(GPIOD, LED_RED_PIN);
-		status = xTaskNotifyWait(0,0,NULL, pdMS_TO_TICKS(400));
-		if (status == pdTRUE)
-		{
+		status = xTaskNotifyWait(0, 0, NULL, pdMS_TO_TICKS(400));
+		if(status == pdTRUE){
 			vTaskSuspendAll();
 			next_task_handle = NULL;
 			xTaskResumeAll();
 			HAL_GPIO_WritePin(GPIOD, LED_RED_PIN, GPIO_PIN_SET);
-			SEGGER_SYSVIEW_PrintfTarget("Delete red task and button task!!");
-			vTaskSuspend(NULL);
+			vTaskDelete(btn_task_handle);
+			SEGGER_SYSVIEW_PrintfTarget("Delete red task");
+			vTaskDelete(NULL);
+		}
+	}
+}
+
+static void led_orange_handler(void* parameters)
+{
+	BaseType_t status;
+	while(1)
+	{
+		SEGGER_SYSVIEW_PrintfTarget("Toggling orange LED");
+		HAL_GPIO_TogglePin(GPIOD, LED_ORANGE_PIN);
+		status = xTaskNotifyWait(0, 0, NULL, pdMS_TO_TICKS(800));
+		if(status == pdTRUE){
+			vTaskSuspendAll();
+			next_task_handle = ledr_task_handle;
+			xTaskResumeAll();
+			HAL_GPIO_WritePin(GPIOD, LED_ORANGE_PIN, GPIO_PIN_SET);
+			SEGGER_SYSVIEW_PrintfTarget("Delete orange task");
+			vTaskDelete(NULL);
 		}
 	}
 }
@@ -414,24 +396,15 @@ static void button_handler(void* parameters)
 		btn_read = HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_0);
 		if(btn_read)
 		{
-			if(! prev_read)
+			if(!prev_read)
 			{
-				if(next_task_handle == NULL)
-				{
-					vTaskResume(ledg_task_handle);
-					next_task_handle = ledg_task_handle;
-				}
-				else
-				{
-					xTaskNotify(next_task_handle, 0, eNoAction);
-				}
+				xTaskNotify(next_task_handle, 0, eNoAction);
 			}
 		}
 		prev_read = btn_read;
 		vTaskDelay(pdMS_TO_TICKS(10));
 	}
 }
-
 /* USER CODE END 4 */
 
 /**
@@ -463,7 +436,10 @@ void Error_Handler(void)
 {
   /* USER CODE BEGIN Error_Handler_Debug */
   /* User can add his own implementation to report the HAL error return state */
-
+  __disable_irq();
+  while (1)
+  {
+  }
   /* USER CODE END Error_Handler_Debug */
 }
 
@@ -479,7 +455,7 @@ void assert_failed(uint8_t *file, uint32_t line)
 {
   /* USER CODE BEGIN 6 */
   /* User can add his own implementation to report the file name and line number,
-     tex: printf("Wrong parameters value: file %s on line %d\r\n", file, line) */
+     ex: printf("Wrong parameters value: file %s on line %d\r\n", file, line) */
   /* USER CODE END 6 */
 }
 #endif /* USE_FULL_ASSERT */

@@ -2,8 +2,8 @@
 <cdtprojectproperties>
   <section name="org.eclipse.cdt.internal.ui.wizards.settingswizards.IncludePaths">
     <language id="org.eclipse.cdt.core.assembly" name="s,S">
-      <includepath>C:\learning\MasterRTOS\RTOS_workspace\common\ThirdParty\SEGGER\Config</includepath>
-      <includepath>C:\learning\MasterRTOS\RTOS_workspace\common\ThirdParty\SEGGER\SEGGER</includepath>
+      <includepath>C:\learning\MasterRTOS\RTOS_workspace\Common\ThirdParty\SEGGER\Config</includepath>
+      <includepath>C:\learning\MasterRTOS\RTOS_workspace\Common\ThirdParty\SEGGER\SEGGER</includepath>
     </language>
     <language id="org.eclipse.cdt.core.gcc" name="C Source File">
       <includepath>Core/Inc</includepath>
@@ -11,11 +11,11 @@
       <includepath>Drivers/STM32F4xx_HAL_Driver/Inc/Legacy</includepath>
       <includepath>Drivers/CMSIS/Device/ST/STM32F4xx/Include</includepath>
       <includepath>Drivers/CMSIS/Include</includepath>
-      <includepath>C:\learning\MasterRTOS\RTOS_workspace\common\ThirdParty\FreeRTOS\include</includepath>
-      <includepath>C:\learning\MasterRTOS\RTOS_workspace\common\ThirdParty\FreeRTOS\portable\GCC\ARM_CM4F</includepath>
-      <includepath>C:\learning\MasterRTOS\RTOS_workspace\common\ThirdParty\SEGGER\Config</includepath>
-      <includepath>C:\learning\MasterRTOS\RTOS_workspace\common\ThirdParty\SEGGER\OS</includepath>
-      <includepath>C:\learning\MasterRTOS\RTOS_workspace\common\ThirdParty\SEGGER\SEGGER</includepath>
+      <includepath>C:\learning\MasterRTOS\RTOS_workspace\Common\ThirdParty\FreeRTOS\include</includepath>
+      <includepath>C:\learning\MasterRTOS\RTOS_workspace\Common\ThirdParty\FreeRTOS\portable\GCC\ARM_CM4F</includepath>
+      <includepath>C:\learning\MasterRTOS\RTOS_workspace\Common\ThirdParty\SEGGER\Config</includepath>
+      <includepath>C:\learning\MasterRTOS\RTOS_workspace\Common\ThirdParty\SEGGER\OS</includepath>
+      <includepath>C:\learning\MasterRTOS\RTOS_workspace\Common\ThirdParty\SEGGER\SEGGER</includepath>
     </language>
     <language name="Object File"/>
   </section>

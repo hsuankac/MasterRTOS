@@ -7,7 +7,7 @@
   ******************************************************************************
   * @attention
   *
-  * Copyright (c) 2022 STMicroelectronics.
+  * Copyright (c) 2024 STMicroelectronics.
   * All rights reserved.
   *
   * This software is licensed under terms that can be found in the LICENSE file
@@ -124,12 +124,11 @@ void Error_Handler(void);
 #define Audio_SDA_GPIO_Port GPIOB
 #define MEMS_INT2_Pin GPIO_PIN_1
 #define MEMS_INT2_GPIO_Port GPIOE
+
 /* USER CODE BEGIN Private defines */
-
-#define LED_GREEN_PIN		LD4_Pin
-#define LED_ORANGE_PIN		LD3_Pin
-#define LED_RED_PIN			LD5_Pin
-
+#define	LED_GREEN_PIN 	LD4_Pin
+#define	LED_ORANGE_PIN 	LD3_Pin
+#define	LED_RED_PIN 	LD5_Pin
 /* USER CODE END Private defines */
 
 #ifdef __cplusplus

@@ -1,0 +1,15 @@
+/*
+ * rtc.c
+ *
+ *  Created on: Nov 8, 2024
+ *      Author: hsuankai.chang
+ */
+
+#include "main.h"
+void show_time_data(void)
+{
+	static char showtime[40];
+	static char showdata[40];
+
+	RTC_DATA
+}
